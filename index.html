@@ -6,12 +6,13 @@
     <title>Bio</title>
     <style>
         body { 
-            font-family: sans-serif; 
-            background: url('https://cdn.motor1.com/images/mgl/wl6wOV/s3/bmw-s-1000-rr-2025-comeca-a-ser-fabricada-no-brasil.webp') no-repeat center center fixed; 
+            font-family: sans-serif;  
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40); /* Fundo moderno caso não use foto */
             background-size: cover; 
+            background-position: center;
             color: #fff; 
             text-align: center; 
-            padding: 50px 20px; 
+            padding: 20px; 
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -20,15 +21,43 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
-        /* Caixa escura semi-transparente para dar leitura ao texto sobre a foto */
+        
         .content {
             background: rgba(0, 0, 0, 0.6);
-            padding: 25px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
             max-width: 400px;
+            width: 100%;
+            backdrop-filter: blur(10px); /* Efeito de vidro moderno */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-        h1 { font-size: 24px; margin: 0 0 10px 0; }
-        p { font-size: 16px; color: #ccc; margin: 0; line-height: 1.5; }
+
+        h1 { font-size: 26px; margin: 0 0 10px 0; }
+        p { font-size: 16px; color: #ccc; margin: 0 0 20px 0; line-height: 1.5; }
+
+        /* Botão estilizado */
+        .btn-like {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn-like:hover {
+            background: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        .btn-like:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
@@ -36,7 +65,19 @@
     <div class="content">
         <h1>Ruan</h1>
         <p>Outra Hora Faço</p>
+        
+        <!-- O botão deve ficar aqui dentro do body/content -->
+        <button class="btn-like">❤️ <span>0</span></button>
     </div>
 
+    <script>
+        const botao = document.querySelector(".btn-like");
+        botao.addEventListener("click", botaoClicado);
+
+        function botaoClicado() {
+            let texto = botao.querySelector("span");
+            texto.textContent = Number(texto.textContent) + 1;
+        }
+    </script>
 </body>
 </html>
